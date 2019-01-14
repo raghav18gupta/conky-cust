@@ -19,16 +19,16 @@ try:
         for event in holiday[16:].split('\n')[:-2]:
             output.append(event.strip())
 
-    if output == []:
-        output.append('No e vent today')
-
     with open('/home/raghav18gupta/Desktop/gitHub/projects/conky-cust/pkl.pkl', 'wb') as f:
         pickle.dump(output, f)
+
+    if output == []:
+        print('No event today.')
 
 except:
     with open('/home/raghav18gupta/Desktop/gitHub/projects/conky-cust/pkl.pkl', 'rb') as f:
         output = pickle.load(f)
-    print(r'✘ Connect to internet')
+    print('✘ Connect to internet')
 
 for event in output:
-    print(r'➜ ', event)
+    print('➜ ', event)
