@@ -10,13 +10,15 @@ output = []
 
 if 'No Events Found...' not in contacts:
     for event in contacts[16:].split('\n')[:-2]:
-        output.append(event.strip())
+        output.append('- ' + event.strip())
 
 if 'No Events Found...' not in holiday:
     for event in holiday[16:].split('\n')[:-2]:
-        output.append(event.strip())
+        output.append('- ' + event.strip())
 
 if output == []:
     output.append('No event today')
 
-print(output)
+print('|'.join(output))
+# for event in output:
+#     print(event)

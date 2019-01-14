@@ -86,7 +86,7 @@ settings_t2 = { -- This table draws the horizontal text - day, and month
     y = 520,
     size = 28,
     trail = 46,
-    left_pad = 60,                  -- left side padding to make space for date
+    left_pad = 45,                  -- left side padding to make space for date
     -- translate the following table for your own language
     names = {"JANUARY","FEBRUARY","MARCH","APRIL","MAY","JUNE","JULY",
                 "AUGUST","SEPTEMBER","OCTOBER","NOVEMBER","DECEMBER"}
@@ -98,7 +98,7 @@ settings_t2 = { -- This table draws the horizontal text - day, and month
     y = 560,
     size = 40,
     trail = 28,
-    left_pad = 60,                  -- left side padding to make space for date
+    left_pad = 45,                  -- left side padding to make space for date
     -- translate the following table for your own language
     names = {"MONDAY", "TUESDAY", "WEDNESDAY",
                 "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"}
@@ -246,16 +246,16 @@ function out(txj)
         return face,fs,x,y,rad,rad2,tx,ty
     end--justify local function #################
     --set variables
-    local c=txj.c 			or {0xffffff, 1}
-    local a=txj.a 			or 1
-    local f=txj.f 			or "monospace"
-    local fs=txj.fs 	    or 12
-    local x=txj.x 		    or 100
-    local y=txj.y 			or 100
-    local txt=txj.txt 		or "text"
-    local hj=txj.hj 		or "l"
-    local vj=txj.vj 		or "n"
-    local face=txj.face		or "normal"
+    local c=txj.c           or {0xffffff, 1}
+    local a=txj.a           or 1
+    local f=txj.f           or "monospace"
+    local fs=txj.fs         or 12
+    local x=txj.x           or 100
+    local y=txj.y           or 100
+    local txt=txj.txt       or "text"
+    local hj=txj.hj         or "l"
+    local vj=txj.vj         or "n"
+    local face=txj.face     or "normal"
     --print text ################################
     local face,fs,x,y=justify(txt,x,hj,y,vj,f,face,fs)
     cairo_select_font_face (cr,face[1],face[2],face[3])
