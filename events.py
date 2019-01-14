@@ -1,24 +1,31 @@
 import subprocess
-
-contacts = subprocess.check_output(
-    'gcalcli --nocolor agenda "`date`" 11:59pm', shell=True).decode('utf-8')
-
-holiday = subprocess.check_output(
-    'gcalcli --nocolor --cal "Holidays in India" agenda "`date`" 11:59pm', shell=True).decode('utf-8')
+import pickle
 
 output = []
 
-if 'No Events Found...' not in contacts:
-    for event in contacts[16:].split('\n')[:-2]:
-        output.append('- ' + event.strip())
+try:
+    contacts = subprocess.check_output(
+        'gcalcli --nocolor agenda "`date`" 11:59pm', shell=True, stderr=subprocess.STDOUT, timeout=5).decode('utf-8')
 
-if 'No Events Found...' not in holiday:
-    for event in holiday[16:].split('\n')[:-2]:
-        output.append('- ' + event.strip())
+    holiday = subprocess.check_output(
+        'gcalcli --nocolor --cal "Holidays in India" agenda "`date`" 11:59pm', shell=True, stderr=subprocess.STDOUT, timeout=5).decode('utf-8')
 
-if output == []:
-    output.append('No event today')
+    if 'No Events Found...' not in contacts:
+        for event in contacts[16:].split('\n')[:-2]:
+            output.append('- ' + event.strip())
 
+    if 'No Events Found...' not in holiday:
+        for event in holiday[16:].split('\n')[:-2]:
+            output.append('- ' + event.strip())
+
+    if output == []:
+        output.append('No e vent today')
+
+    with open('/home/raghav18gupta/Desktop/gitHub/projects/conky-cust/pkl.pkl', 'wb') as f:
+        pickle.dump(output, f)
+
+except:
+    with open('/home/raghav18gupta/Desktop/gitHub/projects/conky-cust/pkl.pkl', 'rb') as f:
+        output = pickle.load(f)
+    output.append('⚠️ Connect to internet')
 print('|'.join(output))
-# for event in output:
-#     print(event)
