@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import subprocess
 import pickle
 
@@ -12,11 +13,11 @@ try:
 
     if 'No Events Found...' not in contacts:
         for event in contacts[16:].split('\n')[:-2]:
-            output.append('- ' + event.strip())
+            output.append(event.strip())
 
     if 'No Events Found...' not in holiday:
         for event in holiday[16:].split('\n')[:-2]:
-            output.append('- ' + event.strip())
+            output.append(event.strip())
 
     if output == []:
         output.append('No e vent today')
@@ -27,5 +28,7 @@ try:
 except:
     with open('/home/raghav18gupta/Desktop/gitHub/projects/conky-cust/pkl.pkl', 'rb') as f:
         output = pickle.load(f)
-    output.append('⚠️ Connect to internet')
-print('|'.join(output))
+    print(r'✘ Connect to internet')
+
+for event in output:
+    print(r'➜ ', event)
