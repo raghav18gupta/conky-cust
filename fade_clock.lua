@@ -97,7 +97,7 @@ settings_t2 = { -- This table draws the horizontal text - day, and month
     x = 440,
     y = 560,
     size = 40,
-    trail = 28,
+    trail = 26,
     left_pad = 45,                  -- left side padding to make space for date
     -- translate the following table for your own language
     names = {"MONDAY", "TUESDAY", "WEDNESDAY",

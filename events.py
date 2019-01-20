@@ -28,7 +28,7 @@ try:
 except:
     with open('/home/raghav18gupta/Desktop/gitHub/projects/conky-cust/pkl.pkl', 'rb') as f:
         output = pickle.load(f)
-    print('✘ Connect to internet')
+    print('✘ No internet connection')
 
 for event in output:
     print('➜ ', event)
